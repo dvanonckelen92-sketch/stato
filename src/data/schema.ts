@@ -6,9 +6,9 @@ export const businessNode = {
   // ProfessionalService is een LocalBusiness- en dus Organization-subtype; Organization erbij voor tools die geen subtypes herkennen.
   '@type': ['ProfessionalService', 'Organization'],
   '@id': BUSINESS_ID,
-  name: SITE.name,
+  name: SITE.businessName,
   legalName: SITE.legalName,
-  alternateName: 'STATO Plaatsbeschrijvingen',
+  alternateName: SITE.name,
   description:
     'STATO maakt gedetailleerde ingaande en uitgaande plaatsbeschrijvingen, huurchecks en controles van uitgevoerde werken voor particulieren, verhuurders en vastgoedkantoren in Limburg en Vlaams-Brabant.',
   url: `${SITE.url}/`,
@@ -47,6 +47,12 @@ export const businessNode = {
       '@type': 'Offer',
       itemOffered: { '@type': 'Service', '@id': `${SITE.url}/onze-diensten#${id}`, name },
     })),
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: SITE.hours.days,
+    opens: SITE.hours.opens,
+    closes: SITE.hours.closes,
   },
   contactPoint: {
     '@type': 'ContactPoint',

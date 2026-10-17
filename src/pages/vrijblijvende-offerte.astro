@@ -92,7 +92,8 @@ const types = ['Studio', 'Appartement', 'Woning', 'Garage', 'Handelspand', 'Ande
           <h2 style="color:#fff;font-size:1.4rem;margin:0">Liever rechtstreeks contact?</h2>
           <a href={`tel:${SITE.phone}`} style="color:#fff"><span class="ico"><Icon name="phone" size={20} /></span>{SITE.phoneDisplay}</a>
           <a href={`mailto:${SITE.email}`} style="color:#fff"><span class="ico"><Icon name="mail" size={20} /></span>{SITE.email}</a>
-          <p style="margin:0;display:flex;gap:12px;align-items:center"><span class="ico"><Icon name="pin" size={20} /></span><span>{SITE.legalName}<br />{SITE.address.street}, {SITE.address.postalCode} {SITE.address.city}</span></p>
+          <p style="margin:0;display:flex;gap:12px;align-items:center"><span class="ico"><Icon name="pin" size={20} /></span><span>{SITE.businessName}<br />{SITE.address.street}, {SITE.address.postalCode} {SITE.address.city}</span></p>
+          <p style="margin:0;display:flex;gap:12px;align-items:center"><span class="ico"><Icon name="clock" size={20} /></span><span>{SITE.hours.label}</span></p>
         </div>
         <div class="card" style="margin-top:24px">
           <h2 style="font-size:1.25rem">Wat gebeurt er na uw aanvraag?</h2>

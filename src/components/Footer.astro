@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
     <div>
       <h2 class="site-footer__title">Contact</h2>
       <address>
-        <strong>{SITE.legalName}</strong><br />
+        <strong>{SITE.businessName}</strong><br />
         {SITE.founder}<br />
         {SITE.address.street}<br />
         {SITE.address.postalCode} {SITE.address.city}
@@ -23,6 +23,7 @@ const year = new Date().getFullYear();
         <li><Icon name="phone" size={16} /><a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
         <li><Icon name="mail" size={16} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
       </ul>
+      <p>{SITE.hours.label}</p>
       <p class="site-footer__profiles">
         {SITE.profiles.map((p, i) => <>{i > 0 && ' · '}<a href={p.url} rel="noopener">{p.label}</a></>)}
       </p>

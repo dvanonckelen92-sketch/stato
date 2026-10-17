@@ -2,6 +2,8 @@
 export const SITE = {
   url: 'https://www.stato.be',
   name: 'STATO',
+  // Naam en adres zoals op het Google Bedrijfsprofiel (NAP gelijk houden).
+  businessName: 'STATO Plaatsbeschrijvingen',
   legalName: 'Stato Plaatsbeschrijvingen',
   tagline: 'Gedetailleerde plaatsbeschrijvingen',
   founder: 'Pieter Wolfs',
@@ -10,13 +12,20 @@ export const SITE = {
   phoneDisplay: '0486 52 02 70',
   vat: 'BE0742579045',
   address: {
-    street: 'Driewilgenstraat 30/301',
+    street: 'Driewilgenstraat 30',
     postalCode: '3800',
     city: 'Sint-Truiden',
     region: 'Limburg',
     country: 'BE',
   },
   areaServed: ['Limburg', 'Vlaams-Brabant'],
+  // Openingsuren zoals op het Google Bedrijfsprofiel.
+  hours: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '09:00',
+    closes: '17:00',
+    label: 'Maandag tot zaterdag van 9 tot 17 uur',
+  },
   // Profielen van STATO zelf (gekoppeld aan het Google Bedrijfsprofiel).
   profiles: [
     { label: 'Google', url: 'https://www.google.com/maps?cid=7936025958209312172' },
