@@ -1,0 +1,17 @@
+---
+interface Props {
+  inverse?: boolean;
+}
+const { inverse = false } = Astro.props;
+---
+<span class:list={['logo', { 'logo--inverse': inverse }]}>
+  <svg class="logo__icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <g fill="none" stroke-width="4">
+      <path class="logo__line" d="M12 57V24L32 8l20 16v22L42 57z" />
+      <path class="logo__line" d="M42 57V46h10" />
+      <path d="M18 28.5l3 3 5-5M18 37.5l3 3 5-5M18 46.5l3 3 5-5" stroke="#d39c4f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+      <path class="logo__line" d="M30 29h14M30 38h14M30 47h14" stroke-width="3.4" />
+    </g>
+  </svg>
+  <span class="logo__word">ST<span class="logo__a">A</span>TO</span>
+</span>

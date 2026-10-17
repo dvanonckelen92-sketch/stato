@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE } from '../data/site';
+
+import heroImg from '../assets/foto/verslag-digitaal-afleveren.jpg';
+import priceImg from '../assets/foto/pieter-wolfs-portret-tablet.jpg';
+---
+<Base
+  title="Prijs en werkwijze plaatsbeschrijving"
+  description="Vaste prijs per type pand, inclusief intredende én uitgaande plaatsbeschrijving en zonder verplaatsingskosten. Verslag digitaal binnen 24 uur na het plaatsbezoek."
+  path="/tarieven-werkwijze"
+  breadcrumbs={[{ name: 'Tarieven & werkwijze', path: '/tarieven-werkwijze' }]}
+>
+  <section class="page-hero blueprint">
+    <div class="container page-hero__grid">
+      <div>
+        <h1>Vaste prijzen. Snelle oplevering. Duidelijke afspraken.</h1>
+        <p class="lead">Bij STATO werken we met duidelijke, vaste tarieven per type pand. Zo weet u vooraf exact wat uw plaatsbeschrijving kost, zonder onverwachte of extra kosten achteraf.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="/vrijblijvende-offerte">Vraag uw prijs aan <Icon name="arrow" size={18} /></a>
+        </div>
+      </div>
+      <Photo src={heroImg} alt="Pieter Wolfs werkt een plaatsbeschrijvingsverslag af op zijn laptop" width={720} height={540} position="right" sizes="(max-width: 900px) 92vw, 500px" priority />
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>Transparante vaste prijzen</h2>
+        <p>Bij STATO houden we onze prijszetting graag eenvoudig en duidelijk. We werken met vaste tarieven op basis van het type en de grootte van het pand. Of het nu gaat om een studio, appartement, woning, garage of handelspand: u weet vooraf duidelijk wat de plaatsbeschrijving kost.</p>
+        <p>Onze tarieven zijn transparant en omvatten zowel de intredende als de uitgaande plaatsbeschrijving. Er komen geen onverwachte kosten achteraf en geen extra verplaatsingskosten op basis van de locatie.</p>
+        <h3>Waarvan hangt de prijs af?</h3>
+        <p>Van het type pand (studio, appartement, woning, garage, staanplaats of handelspand) en de grootte, in slaapkamers of oppervlakte. Vermeld die twee in uw <a href="/vrijblijvende-offerte">aanvraag</a>, dan krijgt u meteen de juiste prijs.</p>
+      </div>
+      <div class="split__media split__media--tall">
+        <Photo src={priceImg} alt="Pieter Wolfs, oprichter van STATO, met een tablet in de hand" width={640} height={800} sizes="(max-width: 860px) 92vw, 540px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark blueprint">
+    <div class="container">
+      <div class="section__head">
+        <h2>Snelle oplevering van uw verslag</h2>
+        <p class="lead">Ook voor de oplevering maken we duidelijke afspraken. Zo beschikt u snel en tijdig over het volledige verslag, tegen de afgesproken datum.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Aanvraag en prijs</h3><p>U bezorgt ons het type en de grootte van het pand en ontvangt vooraf een vaste prijs.</p></li>
+        <li><h3>Plaatsbezoek</h3><p>We gaan grondig door het pand en leggen alles vast met beschrijvingen en fotodocumentatie.</p></li>
+        <li><h3>Verwerking</h3><p>Meteen na het plaatsbezoek verwerken we alle vaststellingen en foto's tot een professioneel verslag.</p></li>
+        <li><h3>Oplevering en factuur</h3><p>Indien gewenst ontvangt u het verslag digitaal binnen 24 uur. De factuur volgt samen met het verslag.</p></li>
+      </ol>
+      <p style="margin-top:32px;max-width:70ch">De facturatie gebeurt samen met de oplevering van het verslag. Zo hoeft u niet te wachten op de verwerking van een betaling en ontvangt u het verslag tijdig, volgens de gemaakte afspraken.</p>
+      <div class="actions">
+        <a class="btn btn--gold" href={SITE.sampleReport}><Icon name="download" size={18} /> Bekijk de lay-out van een voorbeeldverslag</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <h2>Afspraken en voorwaarden</h2>
+      <ul class="checklist">
+        <li>Een afspraak kan kosteloos worden verplaatst of geannuleerd tot 48 uur vóór het afgesproken tijdstip.</li>
+        <li>Facturen zijn betaalbaar binnen veertien kalenderdagen na de factuurdatum, tenzij schriftelijk anders afgesproken.</li>
+        <li>Opmerkingen of correcties bij het verslag meldt u bij voorkeur binnen zeven kalenderdagen na ontvangst.</li>
+        <li>Worden de kosten tussen huurder en verhuurder verdeeld, dan staat die verdeling in de opdrachtbevestiging.</li>
+      </ul>
+      <p>Alle details leest u in onze <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

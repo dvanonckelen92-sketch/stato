@@ -1,0 +1,53 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { SITE } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <Logo inverse />
+      <p>Professionele, onafhankelijke en zorgvuldige plaatsbeschrijvingen voor particulieren, verhuurders en vastgoedprofessionals in Limburg en Vlaams-Brabant.</p>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">Contact</h2>
+      <address>
+        <strong>{SITE.legalName}</strong><br />
+        {SITE.founder}<br />
+        {SITE.address.street}<br />
+        {SITE.address.postalCode} {SITE.address.city}
+      </address>
+      <ul class="site-footer__contact">
+        <li><Icon name="phone" size={16} /><a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
+        <li><Icon name="mail" size={16} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">Diensten</h2>
+      <ul>
+        <li><a href="/onze-diensten#ingaande-plaatsbeschrijving">Ingaande plaatsbeschrijving</a></li>
+        <li><a href="/onze-diensten#uitgaande-plaatsbeschrijving">Uitgaande plaatsbeschrijving</a></li>
+        <li><a href="/onze-diensten#huurcheck">Huurcheck</a></li>
+        <li><a href="/onze-diensten#opvolging-van-werken">Opvolging van werken</a></li>
+        <li><a href="/vastgoedprofessionals">Voor vastgoedkantoren</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">STATO</h2>
+      <ul>
+        <li><a href="/over-stato">Over STATO</a></li>
+        <li><a href="/tarieven-werkwijze">Tarieven &amp; werkwijze</a></li>
+        <li><a href="/vrijblijvende-offerte">Vrijblijvende offerte</a></li>
+        <li><a href={SITE.sampleReport}>Voorbeeldverslag (pdf)</a></li>
+        <li><a href="/algemene-voorwaarden">Algemene voorwaarden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>&copy; {year} {SITE.legalName} &middot; Ondernemingsnummer {SITE.vat}</p>
+  </div>
+</footer>

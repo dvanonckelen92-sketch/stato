@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { artikels, AV_VERSIE } from '../data/algemene-voorwaarden';
+---
+<Base
+  title="Algemene voorwaarden"
+  description="Algemene voorwaarden van Stato Plaatsbeschrijvingen: uitvoering van de opdracht, aansprakelijkheid, prijzen en betaling, annulering, privacy en gebruik van foto's."
+  path="/algemene-voorwaarden"
+  breadcrumbs={[{ name: 'Algemene voorwaarden', path: '/algemene-voorwaarden' }]}
+>
+  <section class="page-hero blueprint">
+    <div class="container">
+      <h1>Algemene voorwaarden</h1>
+      <p class="lead">{AV_VERSIE}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <nav aria-label="Inhoud algemene voorwaarden">
+        <ol class="toc">
+          {artikels.map((a) => <li><a href={`#artikel-${a.n}`}>{a.title}</a></li>)}
+        </ol>
+      </nav>
+      {artikels.map((a) => (
+        <section id={`artikel-${a.n}`}>
+          <h2>Artikel {a.n}. {a.title}</h2>
+          {a.items.map((item) => (
+            <>
+              <p><strong>{item.nr}.</strong> {item.text}</p>
+              {item.list.length > 0 && <ul>{item.list.map((li) => <li>{li}</li>)}</ul>}
+            </>
+          ))}
+        </section>
+      ))}
+    </div>
+  </section>
+</Base>

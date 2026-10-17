@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../data/site';
+import { businessNode } from '../data/schema';
+
+const diensten = ['Ingaande plaatsbeschrijving', 'Uitgaande plaatsbeschrijving', 'Huurcheck', 'Opvolging van werken', 'Algemene vraag'];
+const rollen = ['Particulier', 'Verhuurder', 'Huurder', 'Vastgoedprofessional'];
+const types = ['Studio', 'Appartement', 'Woning', 'Garage', 'Handelspand', 'Andere'];
+---
+<Base
+  title="Offerte plaatsbeschrijving aanvragen"
+  description="Vraag vrijblijvend een offerte voor een plaatsbeschrijving in Limburg of Vlaams-Brabant. U krijgt vooraf een vaste prijs voor uw appartement, woning of handelspand."
+  path="/vrijblijvende-offerte"
+  pageType="ContactPage"
+  breadcrumbs={[{ name: 'Vrijblijvende offerte', path: '/vrijblijvende-offerte' }]}
+  schema={[businessNode]}
+>
+  <section class="page-hero blueprint">
+    <div class="container">
+      <h1>Vraag een offerte voor uw plaatsbeschrijving</h1>
+      <p class="lead">Heeft u een vraag, wilt u een plaatsbeschrijving aanvragen of meer informatie over onze diensten? Neem gerust contact op met STATO. We beantwoorden uw vraag zo snel mogelijk en bekijken graag hoe we u kunnen helpen.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split" style="align-items:start">
+      <form class="form" name="offerte" method="POST" action={SITE.formAction} data-netlify="true" netlify-honeypot="website">
+        <input type="hidden" name="form-name" value="offerte" />
+        <p class="hp"><label>Laat dit veld leeg <input name="website" tabindex="-1" autocomplete="off" /></label></p>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="naam">Naam <span class="req">*</span></label>
+            <input id="naam" name="naam" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="gsm">Gsm-nummer <span class="req">*</span></label>
+            <input id="gsm" name="gsm" type="tel" autocomplete="tel" inputmode="tel" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">E-mailadres <span class="req">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <fieldset class="field">
+          <legend>Dienst <span class="req">*</span></legend>
+          <div class="chips">
+            {diensten.map((d, i) => (
+              <label><input type="radio" name="dienst" value={d} required={i === 0} checked={i === 0} /><span>{d}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Ik ben…</legend>
+          <div class="chips">
+            {rollen.map((r) => (
+              <label><input type="radio" name="rol" value={r} /><span>{r}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="type">Type pand <span class="req">*</span></label>
+            <select id="type" name="type" required>
+              <option value="">Kies het type pand</option>
+              {types.map((t) => <option value={t}>{t}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="grootte">Grootte van het pand</label>
+            <input id="grootte" name="grootte" type="text" placeholder="bv. 2 slaapkamers of 95 m²" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="adres">Adres van het pand</label>
+          <input id="adres" name="adres" type="text" autocomplete="street-address" />
+        </div>
+        <div class="field">
+          <label for="bericht">Bericht <span class="req">*</span></label>
+          <textarea id="bericht" name="bericht" required placeholder="Gewenste datum, bijzonderheden, vragen…"></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit">Verzenden <Icon name="arrow" size={18} /></button>
+        <p class="form__note">We gebruiken uw gegevens alleen om uw aanvraag te beantwoorden, volgens de AVG. Meer in onze <a href="/algemene-voorwaarden#artikel-12">algemene voorwaarden</a>.</p>
+      </form>
+
+      <aside>
+        <div class="contact-card blueprint" style="color:#fff">
+          <h2 style="color:#fff;font-size:1.4rem;margin:0">Liever rechtstreeks contact?</h2>
+          <a href={`tel:${SITE.phone}`} style="color:#fff"><span class="ico"><Icon name="phone" size={20} /></span>{SITE.phoneDisplay}</a>
+          <a href={`mailto:${SITE.email}`} style="color:#fff"><span class="ico"><Icon name="mail" size={20} /></span>{SITE.email}</a>
+          <p style="margin:0;display:flex;gap:12px;align-items:center"><span class="ico"><Icon name="pin" size={20} /></span><span>{SITE.legalName}<br />{SITE.address.street}, {SITE.address.postalCode} {SITE.address.city}</span></p>
+        </div>
+        <div class="card" style="margin-top:24px">
+          <h2 style="font-size:1.25rem">Wat gebeurt er na uw aanvraag?</h2>
+          <ul class="checklist" style="margin:0">
+            <li>U ontvangt vooraf een duidelijke, vaste prijs.</li>
+            <li>We plannen samen een plaatsbezoek in.</li>
+            <li>Indien gewenst krijgt u het verslag binnen 24 uur na het bezoek.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

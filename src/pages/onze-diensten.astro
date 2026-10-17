@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE } from '../data/site';
+import { serviceNode } from '../data/schema';
+
+import heroImg from '../assets/foto/plaatsbezoek-woonkamer-trap.jpg';
+import inImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
+import outImg from '../assets/foto/detailfoto-kraan-tablet.jpg';
+import checkImg from '../assets/foto/fotodocumentatie-tablet-detail.jpg';
+import worksImg from '../assets/foto/verslag-opmaken-laptop.jpg';
+
+const schema = [
+  serviceNode('ingaande-plaatsbeschrijving', 'Ingaande plaatsbeschrijving', 'Volledige toestand van het pand bij de start van een huurperiode, met foto\'s, meterstanden en rookmelders. Kan samen met het huurcontract worden geregistreerd.'),
+  serviceNode('uitgaande-plaatsbeschrijving', 'Uitgaande plaatsbeschrijving', 'Vergelijking van de toestand bij het einde van de huur met de ingaande plaatsbeschrijving; veranderingen, schade of slijtage worden objectief vastgesteld.'),
+  serviceNode('huurcheck', 'Huurcheck', 'Controle van de algemene staat en het onderhoud van een verhuurd pand, inclusief de aanwezigheid en werking van rookmelders.'),
+  serviceNode('opvolging-van-werken', 'Opvolging van werken', 'Controle of herstellingen en onderhoudswerken correct en volgens afspraak zijn uitgevoerd, met foto\'s en een verslag.'),
+];
+---
+<Base
+  title="Ingaande en uitgaande plaatsbeschrijving"
+  description="Ingaande en uitgaande plaatsbeschrijving, huurcheck en opvolging van werken in Limburg en Vlaams-Brabant. Duidelijke foto's, vaste prijs en een snel verslag."
+  path="/onze-diensten"
+  breadcrumbs={[{ name: 'Onze diensten', path: '/onze-diensten' }]}
+  schema={schema}
+>
+  <section class="page-hero blueprint">
+    <div class="container page-hero__grid">
+      <div>
+        <h1>Ingaande en uitgaande plaatsbeschrijving, huurcheck en opvolging van werken</h1>
+        <p class="lead">Bij STATO kunt u terecht voor professionele en nauwkeurige controles van uw vastgoed. Wij werken voor particulieren, verhuurders en vastgoedmakelaars en zorgen steeds voor een duidelijk verslag, persoonlijke service en een snelle opvolging.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="/vrijblijvende-offerte">Vraag uw prijs aan <Icon name="arrow" size={18} /></a>
+          <a class="btn btn--ghost-light" href={SITE.sampleReport}><Icon name="download" size={18} /> Voorbeeldverslag</a>
+        </div>
+      </div>
+      <Photo
+        src={heroImg}
+        alt="Plaatsbeschrijver controleert een woonkamer met zwevende trap en noteert alles op een tablet"
+        width={720}
+        height={540}
+        sizes="(max-width: 900px) 92vw, 500px"
+        priority
+      />
+    </div>
+  </section>
+
+  <section class="section" id="ingaande-plaatsbeschrijving">
+    <div class="container split">
+      <div>
+        <h2>Ingaande plaatsbeschrijving</h2>
+        <p>Voor de start van een huurperiode brengen we de volledige toestand van het pand nauwkeurig in kaart. We controleren elke ruimte, maken duidelijke foto's en noteren aanwezige gebreken en aandachtspunten.</p>
+        <p>Ook de meterstanden en de aanwezige rookmelders worden standaard opgenomen. Het verslag kan als bijlage bij de huurovereenkomst worden gevoegd en samen met het huurcontract worden geregistreerd.</p>
+        <p class="source">In Vlaanderen is een plaatsbeschrijving verplicht bij het begin van een woninghuur, ten laatste tijdens de eerste maand van de huurperiode (<a href="https://www.vlaanderen.be/bouwen-wonen-en-energie/huren-en-verhuren/een-woninghuurovereenkomst-sluiten" rel="noopener">Vlaanderen.be</a>).</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/vrijblijvende-offerte">Vraag uw ingaande plaatsbeschrijving aan</a>
+          <a class="btn btn--outline" href={SITE.sampleReport}>Bekijk de lay-out van een voorbeeldverslag</a>
+        </div>
+      </div>
+      <div class="split__media split__media--tall">
+        <Photo src={inImg} alt="Plaatsbeschrijver legt de toestand van een keuken vast met een tablet bij de start van een huurperiode" width={640} height={800} position="left" sizes="(max-width: 860px) 92vw, 540px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="uitgaande-plaatsbeschrijving">
+    <div class="container split split--reverse">
+      <div>
+        <h2>Uitgaande plaatsbeschrijving</h2>
+        <p>Bij het einde van de huurperiode vergelijken we de huidige toestand van het pand met de ingaande plaatsbeschrijving. We stellen eventuele veranderingen, schade of slijtage duidelijk en objectief vast.</p>
+        <p>Zo beschikken huurder en verhuurder over een betrouwbaar document dat duidelijkheid biedt bij de afsluiting van de huur. STATO treedt daarbij op als onafhankelijke vaststeller, niet als vertegenwoordiger van de huurder of de verhuurder.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/vrijblijvende-offerte">Plan uw uitgaande controle</a>
+        </div>
+      </div>
+      <div class="split__media split__media--tall">
+        <Photo src={outImg} alt="Close-up van een tablet die een detailfoto maakt van een keukenkraan" width={640} height={800} sizes="(max-width: 860px) 92vw, 540px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="huurcheck">
+    <div class="container split">
+      <div>
+        <h2>Huurcheck</h2>
+        <p>Met onze huurcheck controleren we de algemene staat van uw verhuurde pand. We bekijken of het pand goed wordt onderhouden en brengen mogelijke gebreken of aandachtspunten in kaart.</p>
+        <p>Ook controleren we onder andere de aanwezigheid en de werking van de rookmelders. Na de controle ontvangt u een duidelijk overzicht van onze vaststellingen.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/vrijblijvende-offerte">Boek uw huurcheck</a>
+        </div>
+      </div>
+      <div class="split__media split__media--wide">
+        <Photo src={checkImg} alt="Tablet met een foto van een keuken tijdens een huurcheck" width={720} height={480} sizes="(max-width: 860px) 92vw, 540px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="opvolging-van-werken">
+    <div class="container split split--reverse">
+      <div>
+        <h2>Opvolging van werken</h2>
+        <p>Werden er herstellingen, onderhoudswerken of andere werkzaamheden uitgevoerd in uw pand? Dan controleren wij of ze correct en volgens afspraak zijn uitgevoerd.</p>
+        <p>We leggen onze vaststellingen vast met duidelijke foto's en een overzichtelijk verslag. Zo blijft u op de hoogte, ook wanneer u zelf niet ter plaatse kunt zijn.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/vrijblijvende-offerte">Vraag uw controle aan</a>
+        </div>
+      </div>
+      <div class="split__media split__media--wide">
+        <Photo src={worksImg} alt="Pieter Wolfs verwerkt de vaststellingen en foto's tot een verslag op zijn laptop" width={720} height={480} sizes="(max-width: 860px) 92vw, 540px" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <h2>Wat kost een plaatsbeschrijving?</h2>
+      <p>Onze prijzen hangen af van het type en de grootte van uw pand. We hanteren verschillende tarieven voor een studio, appartement, woning, handelspand, garage of staanplaats.</p>
+      <p>Bij elke aanvraag bekijken we uw situatie afzonderlijk en ontvangt u vooraf een duidelijke prijs. Zo weet u altijd waar u aan toe bent, zonder verrassingen achteraf. Meer uitleg vindt u bij <a href="/tarieven-werkwijze">onze tarieven en werkwijze</a>.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="/vrijblijvende-offerte">Vraag uw prijs aan</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE } from '../data/site';
+import { businessNode, websiteNode, founderNode, faqNode } from '../data/schema';
+import { homeFaq } from '../data/faq';
+
+import heroImg from '../assets/foto/plaatsbeschrijver-fotografeert-keuken.jpg';
+import proImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
+import detailImg from '../assets/foto/fotodocumentatie-tablet-detail.jpg';
+
+const services = [
+  {
+    icon: 'in',
+    title: 'Ingaande plaatsbeschrijving',
+    text: 'Bij de start van een huurperiode leggen we de toestand van het pand zorgvuldig vast, ruimte per ruimte en met duidelijke foto\'s.',
+    href: '/onze-diensten#ingaande-plaatsbeschrijving',
+  },
+  {
+    icon: 'out',
+    title: 'Uitgaande plaatsbeschrijving',
+    text: 'Bij het einde van de huur vergelijken we met de ingaande plaatsbeschrijving en stellen we veranderingen of schade objectief vast.',
+    href: '/onze-diensten#uitgaande-plaatsbeschrijving',
+  },
+  {
+    icon: 'smoke',
+    title: 'Huurcheck',
+    text: 'Is het pand in orde? We controleren onder meer of de rookmelders aanwezig zijn en werken, en of het pand goed wordt onderhouden.',
+    href: '/onze-diensten#huurcheck',
+  },
+  {
+    icon: 'tools',
+    title: 'Opvolging van werken',
+    text: 'Werden er herstellingen of werken uitgevoerd? Wij controleren of alles correct en volgens afspraak gebeurd is.',
+    href: '/onze-diensten#opvolging-van-werken',
+  },
+] as const;
+---
+<Base
+  title="Plaatsbeschrijving in Limburg en Vlaams-Brabant"
+  description="Gedetailleerde plaatsbeschrijving met duidelijke foto's voor huurders, verhuurders en makelaars in Limburg en Vlaams-Brabant. Vaste prijs, verslag binnen 24 uur."
+  path="/"
+  schema={[businessNode, websiteNode, founderNode, faqNode('/', homeFaq)]}
+>
+  <section class="hero blueprint">
+    <div class="container hero__inner">
+      <div>
+        <h1>Gedetailleerde plaatsbeschrijving in <em>Limburg</em> en <em>Vlaams-Brabant</em></h1>
+        <p class="lead">Verhuur of betrek uw vastgoed met een gerust gevoel. STATO maakt gedetailleerde en betrouwbare plaatsbeschrijvingen, ondersteund met duidelijke foto's en een professioneel verslag.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="/vrijblijvende-offerte">Vraag uw prijs aan <Icon name="arrow" size={18} /></a>
+          <a class="btn btn--ghost-light" href="/onze-diensten">Ontdek onze diensten</a>
+        </div>
+        <ul class="hero__checks">
+          <li><Icon name="doc" size={20} /> Ingaande én uitgaande plaatsbeschrijving aan één vaste prijs</li>
+          <li><Icon name="meter" size={20} /> Meterstanden en rookmelders standaard in het verslag</li>
+          <li><Icon name="pin" size={20} /> Geen extra verplaatsingskosten, waar uw pand ook ligt</li>
+        </ul>
+      </div>
+      <div class="hero__media">
+        <span class="frame" aria-hidden="true"></span>
+        <Photo
+          src={heroImg}
+          alt="Pieter Wolfs van STATO fotografeert met een tablet de keuken van een huurwoning tijdens een plaatsbeschrijving"
+          width={720}
+          height={900}
+          position="right"
+          sizes="(max-width: 900px) 92vw, 520px"
+          priority
+        />
+        <div class="hero__badge">
+          <Icon name="clock" size={30} />
+          <div><strong>Binnen 24 uur</strong><span>uw verslag digitaal, indien gewenst</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Wat doet STATO?</h2>
+        <p class="lead">Bij STATO zorgen we voor professionele, onafhankelijke en nauwkeurige controles van uw vastgoed. Dankzij onze ervaring en ons oog voor detail krijgt u een helder en betrouwbaar verslag van de staat van uw pand.</p>
+      </div>
+      <div class="grid grid--4">
+        {services.map((s) => (
+          <article class="card">
+            <div class="card__icon"><Icon name={s.icon} size={26} /></div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <a class="card__link" href={s.href}>Meer over {s.title.toLowerCase()} <Icon name="arrow" size={16} /></a>
+          </article>
+        ))}
+      </div>
+      <p class="muted" style="margin-top:28px;max-width:70ch">Daarnaast nemen we de meterstanden op van panden die u verhuurt. Zo worden de standen van onder andere water, gas en elektriciteit correct geregistreerd bij een sleuteloverdracht of een wissel van huurder.</p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container split">
+      <div>
+        <h2>Voor particulieren en vastgoedprofessionals</h2>
+        <p>Wij werken samen met particulieren, verhuurders en vastgoedmakelaars, en bieden elke klant een persoonlijke, nauwkeurige en professionele service.</p>
+        <p>Als verhuurder of huurder krijgt u een objectief bewijs van de staat van het pand bij het begin en het einde van de huur. Voor vastgoedkantoren nemen we het plaatsbezoek en de afspraken met huurder en verhuurder over, en als u dat wilt ook de facturatie. Zit uw eigen planning vol, dan kunt u ons ook voor één opdracht inschakelen.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/vastgoedprofessionals">Samenwerken als vastgoedkantoor</a>
+          <a class="btn btn--outline" href="/over-stato">Maak kennis met Pieter</a>
+        </div>
+      </div>
+      <div class="split__media split__media--tall">
+        <Photo
+          src={proImg}
+          alt="Plaatsbeschrijver noteert vaststellingen op een tablet in een moderne open keuken"
+          width={640}
+          height={800}
+          position="left"
+          sizes="(max-width: 860px) 92vw, 540px"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark blueprint">
+    <div class="container">
+      <div class="section__head">
+        <h2>Van een nauwkeurige rondgang tot een professioneel verslag</h2>
+        <p class="lead">Bij STATO gaan we vanaf het eerste contact professioneel en betrouwbaar te werk. Ook na onze controle blijven we bereikbaar voor vragen en opmerkingen. U heeft één vast aanspreekpunt.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Persoonlijk gesprek</h3>
+          <p>We brengen duidelijk in kaart wat u van ons verwacht, noteren uw wensen en maken heldere afspraken.</p>
+        </li>
+        <li>
+          <h3>Grondige rondgang</h3>
+          <p>We controleren elke ruimte nauwkeurig en leggen alle gebreken en aandachtspunten vast met professionele foto's.</p>
+        </li>
+        <li>
+          <h3>Meters en rookmelders</h3>
+          <p>Meterstanden en rookmelders worden standaard gecontroleerd en opgenomen in het verslag.</p>
+        </li>
+        <li>
+          <h3>Professioneel verslag</h3>
+          <p>U krijgt een duidelijk verslag dat als bijlage bij de huurovereenkomst kan worden geregistreerd.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>Wat staat er in een plaatsbeschrijving van STATO?</h2>
+        <p>Elk verslag heeft dezelfde opbouw, zodat iedereen snel terugvindt wat hij zoekt. Na een inleiding en de algemene bepalingen beschrijven we het pand ruimte per ruimte.</p>
+        <ul class="checklist">
+          <li>Per ruimte beschrijven we de vier muren, de vloer en het plafond. De straatzijde noemen we altijd de noordmuur.</li>
+          <li>Bij elke wand horen genummerde foto's, zodat elke vaststelling terug te vinden is.</li>
+          <li>Achteraan staan de meters voor elektriciteit, gas en water en het aantal sleutels per deur.</li>
+        </ul>
+        <p>Zo beschikken huurder en verhuurder over een objectief bewijs van de staat van het pand bij het begin of het einde van de huurperiode.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href={SITE.sampleReport}><Icon name="download" size={18} /> Bekijk een voorbeeldverslag (pdf)</a>
+        </div>
+      </div>
+      <div>
+        <div class="report" aria-hidden="true">
+          <div class="report__head"><strong>Plaatsbeschrijving aanvang huur</strong><span>STATO</span></div>
+          <div class="report__row"><b>Inkomhal</b><span><span class="report__tag">Noordmuur · foto 1 tot 3</span><span class="report__tag">Oostmuur · foto 4 tot 6</span><span class="report__tag">Vloer · foto 12</span></span></div>
+          <div class="report__row"><b>Woonkamer</b><span><span class="report__tag">Zuidmuur · foto 19 en 20</span><span class="report__tag">Plafond · foto 24</span></span></div>
+          <div class="report__row"><b>Vaststelling</b><span>Plaatselijke krassen op de muur ter hoogte van de trap.</span></div>
+          <div class="report__row"><b>Meters</b><span>Elektriciteit · gas · water: meternummer en stand</span></div>
+          <div class="report__row"><b>Sleutels</b><span>Voordeur · achterdeur · garage en brievenbus</span></div>
+        </div>
+        <div class="split__media split__media--wide" style="margin-top:24px">
+          <Photo
+            src={detailImg}
+            alt="Over de schouder van de plaatsbeschrijver: een tablet toont een foto van de keuken voor het verslag"
+            width={720}
+            height={480}
+            sizes="(max-width: 860px) 92vw, 540px"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section__head section__head--center">
+        <h2>Wat klanten zeggen</h2>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote><p>De plaatsbeschrijving door Stato was ongelooflijk gedetailleerd en professioneel. Het gaf ons volledige gemoedsrust bij de verhuur van onze woning.</p></blockquote>
+          <figcaption>Sophie Mertens</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote><p>Pieter heeft ons geholpen met een snelle en efficiënte plaatsbeschrijving. De communicatie was uitstekend en het rapport was zeer duidelijk.</p></blockquote>
+          <figcaption>Jan Van Dijck</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container area">
+      <div>
+        <h2>Actief in heel Limburg en Vlaams-Brabant</h2>
+        <p>STATO is gevestigd in Sint-Truiden, in het hart van het mooie Limburg en vlak bij de grens met Vlaams-Brabant. Van daaruit werken wij voor particulieren, verhuurders en vastgoedprofessionals in beide provincies.</p>
+        <p>U betaalt geen extra verplaatsingskosten op basis van de ligging van uw pand: de prijs hangt alleen af van het type en de grootte.</p>
+      </div>
+      <div class="area__map blueprint" aria-hidden="true">
+        <svg viewBox="0 0 400 300" fill="none">
+          <path d="M40 70 C90 40 150 60 190 85 C215 100 205 140 220 165 C235 190 200 235 150 240 C95 245 45 215 35 170 C28 135 20 95 40 70Z" stroke="#8d84d6" stroke-width="2" stroke-dasharray="6 6" fill="rgb(70 53 177 / 18%)" />
+          <path d="M210 60 C265 35 335 50 365 95 C390 135 375 200 330 230 C290 255 235 245 220 210 C210 185 235 165 225 135 C218 110 195 75 210 60Z" stroke="#d39c4f" stroke-width="2" stroke-dasharray="6 6" fill="rgb(211 156 79 / 14%)" />
+          <text x="95" y="150" fill="#cfcbea" font-size="16" font-family="system-ui, sans-serif">Vlaams-Brabant</text>
+          <text x="275" y="130" fill="#f1dcbc" font-size="16" font-family="system-ui, sans-serif">Limburg</text>
+          <circle cx="232" cy="178" r="22" fill="rgb(211 156 79 / 20%)" />
+          <circle cx="232" cy="178" r="7" fill="#d39c4f" />
+          <text x="246" y="200" fill="#fff" font-size="14" font-weight="600" font-family="system-ui, sans-serif">Sint-Truiden</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={homeFaq} title="Veelgestelde vragen over plaatsbeschrijvingen" />
+
+  <CtaBand />
+</Base>

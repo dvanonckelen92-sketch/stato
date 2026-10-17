@@ -1,0 +1,64 @@
+---
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE } from '../data/site';
+import { founderNode } from '../data/schema';
+
+import portrait from '../assets/foto/pieter-wolfs-stato-buiten.jpg';
+import workImg from '../assets/foto/plaatsbezoek-woonkamer-trap.jpg';
+
+const portraitForSchema = await getImage({ src: portrait, width: 800, format: 'jpg' });
+---
+<Base
+  title="Over STATO en oprichter Pieter Wolfs"
+  description="Maak kennis met Pieter Wolfs, oprichter van STATO. Met oog voor detail en een snelle service maakt STATO plaatsbeschrijvingen in Limburg en Vlaams-Brabant."
+  path="/over-stato"
+  pageType="AboutPage"
+  breadcrumbs={[{ name: 'Over STATO', path: '/over-stato' }]}
+  schema={[{ ...founderNode, image: new URL(portraitForSchema.src, SITE.url).href }]}
+>
+  <section class="page-hero blueprint">
+    <div class="container page-hero__grid">
+      <div>
+        <h1>Ik ben Pieter, oprichter van STATO en gebeten door vastgoed</h1>
+        <p class="lead">Vanuit mijn interesse in de vastgoedwereld kwam ik steeds vaker in contact met vastgoedmakelaars en groeide mijn ervaring in het opmaken van plaatsbeschrijvingen. Al snel voelde ik: dit is wat ik graag doe. Daarom heb ik mij verder verdiept in het vak en ben ik STATO gestart.</p>
+      </div>
+      <div class="hero__media" style="max-width:420px;justify-self:center">
+        <span class="frame" aria-hidden="true"></span>
+        <Photo src={portrait} alt="Pieter Wolfs, oprichter van STATO, met een tablet aan een moderne woning met zwembad" width={560} height={760} position="center" sizes="(max-width: 900px) 92vw, 420px" priority />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>Waar STATO voor staat</h2>
+        <p>De naam STATO staat voor een sterke, professionele en betrouwbare aanpak. Een naam die rust en duidelijkheid uitstraalt, net zoals onze verslagen: nauwkeurig, overzichtelijk en correct opgesteld.</p>
+        <p>Bij STATO staan professioneel werk, oog voor detail en een snelle service centraal. We behandelen ieder pand met de nodige zorg en streven ernaar om uw verslag zo snel mogelijk af te werken, zonder in te boeten op kwaliteit.</p>
+        <p>Ik werk graag samen met particulieren en vastgoedprofessionals en hoop een waardevolle bijdrage te leveren aan uw vastgoedverhaal.</p>
+        <h3>Onafhankelijk en neutraal</h3>
+        <p>Bij een plaatsbeschrijving treedt STATO op als onafhankelijke vaststeller, niet als vertegenwoordiger van de huurder of de verhuurder. De verslagen worden neutraal opgesteld, zonder rekening te houden met de belangen van één van de partijen.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="/onze-diensten">Bekijk onze diensten</a>
+          <a class="btn btn--outline" href="/vastgoedprofessionals">Voor vastgoedkantoren</a>
+        </div>
+      </div>
+      <div>
+        <div class="split__media split__media--tall">
+          <Photo src={workImg} alt="Pieter Wolfs tijdens een plaatsbezoek in een woonkamer met zwevende trap" width={640} height={800} position="center" sizes="(max-width: 860px) 92vw, 540px" />
+        </div>
+        <div class="contact-card blueprint" style="margin-top:28px;color:#fff">
+          <strong style="font-size:1.15rem">{SITE.founder}<br /><span style="font-weight:400;color:#cfcbea">{SITE.legalName}</span></strong>
+          <a href={`tel:${SITE.phone}`} style="color:#fff"><span class="ico"><Icon name="phone" size={20} /></span>{SITE.phoneDisplay}</a>
+          <a href={`mailto:${SITE.email}`} style="color:#fff"><span class="ico"><Icon name="mail" size={20} /></span>{SITE.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

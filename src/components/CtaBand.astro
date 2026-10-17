@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import { SITE } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+  button?: string;
+}
+const {
+  title = 'Vraag vrijblijvend uw prijs aan',
+  text = 'U ontvangt vooraf een vaste prijs voor uw pand. Verplaatsingskosten rekenen we niet aan.',
+  button = 'Prijsaanvraag',
+} = Astro.props;
+---
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <div>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="cta-band__actions">
+      <a class="btn btn--gold" href="/vrijblijvende-offerte">{button} <Icon name="arrow" size={18} /></a>
+      <a class="btn btn--ghost-light" href={`tel:${SITE.phone}`}><Icon name="phone" size={18} /> {SITE.phoneDisplay}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,130 @@
+---
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE, BUSINESS_ID, WEBSITE_ID } from '../data/site';
+
+interface Crumb {
+  name: string;
+  path: string;
+}
+interface Props {
+  /** Titel zonder merksuffix; " | STATO" wordt toegevoegd. */
+  title: string;
+  description: string;
+  /** Pad van de pagina, bv. "/over-stato". */
+  path: string;
+  /** Extra JSON-LD-nodes voor deze pagina (worden in één @graph gezet). */
+  schema?: Record<string, unknown>[];
+  /** Type van de WebPage-node, bv. AboutPage of ContactPage. */
+  pageType?: string;
+  breadcrumbs?: Crumb[];
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  path,
+  schema = [],
+  pageType = 'WebPage',
+  breadcrumbs = [],
+  noindex = false,
+  ogImage = SITE.ogImage,
+} = Astro.props;
+
+const canonical = new URL(path, SITE.url).href.replace(/\/$/, path === '/' ? '/' : '');
+const fullTitle = `${title} | ${SITE.name}`;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+
+const crumbs = breadcrumbs.length ? [{ name: 'Home', path: '/' }, ...breadcrumbs] : [];
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': pageType,
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: fullTitle,
+    description,
+    inLanguage: 'nl-BE',
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': BUSINESS_ID },
+    primaryImageOfPage: ogImageUrl,
+    ...(crumbs.length ? { breadcrumb: { '@id': `${canonical}#breadcrumb` } } : {}),
+  },
+  ...(crumbs.length
+    ? [
+        {
+          '@type': 'BreadcrumbList',
+          '@id': `${canonical}#breadcrumb`,
+          itemListElement: crumbs.map((c, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: c.name,
+            item: new URL(c.path, SITE.url).href.replace(/\/$/, c.path === '/' ? '/' : ''),
+          })),
+        },
+      ]
+    : []),
+  ...schema,
+];
+
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+
+// Speculation Rules: de volgende pagina wordt al voorgeladen bij hover, zonder JavaScript-bundel.
+const speculation = JSON.stringify({
+  prerender: [{ where: { href_matches: '/*' }, eagerness: 'moderate' }],
+});
+---
+<!doctype html>
+<html lang="nl-BE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {noindex
+      ? <meta name="robots" content="noindex, follow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
+    <Font cssVariable="--font-heading" preload />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#14113a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_BE" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="STATO, gedetailleerde plaatsbeschrijvingen in Limburg en Vlaams-Brabant" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={jsonLd} />
+    <script type="speculationrules" set:html={speculation} />
+  </head>
+  <body>
+    <a class="skip" href="#inhoud">Ga direct naar de inhoud</a>
+    <Header current={path} />
+    <main id="inhoud">
+      {crumbs.length > 0 && (
+        <nav class="crumbs container" aria-label="Kruimelpad">
+          <ol>
+            {crumbs.map((c, i) => (
+              <li>
+                {i < crumbs.length - 1 ? <a href={c.path}>{c.name}</a> : <span aria-current="page">{c.name}</span>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
