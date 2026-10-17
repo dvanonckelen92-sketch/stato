@@ -11,6 +11,7 @@ import { homeFaq } from '../data/faq';
 
 import proImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
 import detailImg from '../assets/foto/fotodocumentatie-tablet-detail.jpg';
+import areaImg from '../assets/foto/pieter-wolfs-stato-buiten.jpg';
 
 const services = [
   {
@@ -182,16 +183,8 @@ const services = [
         <p>STATO is gevestigd in Sint-Truiden, in het hart van het mooie Limburg en vlak bij de grens met Vlaams-Brabant. Van daaruit werken wij voor particulieren, verhuurders en vastgoedprofessionals in beide provincies.</p>
         <p>U betaalt geen extra verplaatsingskosten op basis van de ligging van uw pand: de prijs hangt alleen af van het type en de grootte.</p>
       </div>
-      <div class="area__map dark" aria-hidden="true">
-        <svg viewBox="0 0 400 300" fill="none">
-          <path d="M40 70 C90 40 150 60 190 85 C215 100 205 140 220 165 C235 190 200 235 150 240 C95 245 45 215 35 170 C28 135 20 95 40 70Z" stroke="#8d84d6" stroke-width="2" stroke-dasharray="6 6" fill="rgb(70 53 177 / 18%)" />
-          <path d="M210 60 C265 35 335 50 365 95 C390 135 375 200 330 230 C290 255 235 245 220 210 C210 185 235 165 225 135 C218 110 195 75 210 60Z" stroke="#d39c4f" stroke-width="2" stroke-dasharray="6 6" fill="rgb(211 156 79 / 14%)" />
-          <text x="95" y="150" fill="#cfcbea" font-size="16" font-family="system-ui, sans-serif">Vlaams-Brabant</text>
-          <text x="275" y="130" fill="#f1dcbc" font-size="16" font-family="system-ui, sans-serif">Limburg</text>
-          <circle cx="232" cy="178" r="22" fill="rgb(211 156 79 / 20%)" />
-          <circle cx="232" cy="178" r="7" fill="#d39c4f" />
-          <text x="246" y="200" fill="#fff" font-size="14" font-weight="600" font-family="system-ui, sans-serif">Sint-Truiden</text>
-        </svg>
+      <div class="split__media split__media--tall">
+        <Photo src={areaImg} alt="Pieter Wolfs van STATO met een tablet bij een woning" width={560} height={700} sizes="(max-width: 860px) 92vw, 480px" />
       </div>
     </div>
   </section>
