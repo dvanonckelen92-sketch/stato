@@ -10,14 +10,14 @@ import sideImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
 import backupImg from '../assets/foto/verslag-opmaken-laptop.jpg';
 
 const features = [
-  { icon: 'user', title: 'Eén vast aanspreekpunt', text: 'Persoonlijk en rechtstreeks contact voor iedere opdracht.' },
-  { icon: 'swap', title: 'Intrede én uittrede', text: 'STATO kan het dossier opvolgen van de intredende tot de uitgaande plaatsbeschrijving.' },
-  { icon: 'camera', title: 'Uitgebreide verslaggeving', text: 'Gedetailleerde beschrijvingen, ondersteund door duidelijke fotodocumentatie.' },
-  { icon: 'clock', title: 'Snelle oplevering', text: 'Oplevering van het verslag is mogelijk binnen 24 uur na het plaatsbezoek.' },
-  { icon: 'calendar', title: 'Minder administratie', text: 'Wij kunnen de afspraken rechtstreeks met de betrokken partijen regelen.' },
-  { icon: 'euro', title: 'Rechtstreekse facturatie', text: 'STATO kan de facturatie rechtstreeks met huurder en verhuurder afhandelen.' },
-  { icon: 'file', title: 'Duidelijke tarieven', text: 'Vooraf duidelijkheid over de kostprijs, zonder onverwachte kosten achteraf.' },
-  { icon: 'shield', title: 'Flexibele samenwerking', text: 'Van een enkele opdracht tot een structurele samenwerking met uw kantoor.' },
+  { title: 'Eén vast aanspreekpunt', text: 'Persoonlijk en rechtstreeks contact voor iedere opdracht.' },
+  { title: 'Intrede én uittrede', text: 'STATO kan het dossier opvolgen van de intredende tot de uitgaande plaatsbeschrijving.' },
+  { title: 'Uitgebreide verslaggeving', text: 'Gedetailleerde beschrijvingen, ondersteund door duidelijke fotodocumentatie.' },
+  { title: 'Snelle oplevering', text: 'Oplevering van het verslag is mogelijk binnen 24 uur na het plaatsbezoek.' },
+  { title: 'Minder administratie', text: 'Wij kunnen de afspraken rechtstreeks met de betrokken partijen regelen.' },
+  { title: 'Rechtstreekse facturatie', text: 'STATO kan de facturatie rechtstreeks met huurder en verhuurder afhandelen.' },
+  { title: 'Duidelijke tarieven', text: 'Vooraf duidelijkheid over de kostprijs, zonder onverwachte kosten achteraf.' },
+  { title: 'Flexibele samenwerking', text: 'Van een enkele opdracht tot een structurele samenwerking met uw kantoor.' },
 ] as const;
 ---
 <Base
@@ -84,7 +84,6 @@ const features = [
       <div class="features">
         {features.map((f) => (
           <div>
-            <Icon name={f.icon} size={28} />
             <h3>{f.title}</h3>
             <p>{f.text}</p>
           </div>

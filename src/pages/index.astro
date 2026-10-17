@@ -14,25 +14,21 @@ import detailImg from '../assets/foto/fotodocumentatie-tablet-detail.jpg';
 
 const services = [
   {
-    icon: 'in',
     title: 'Ingaande plaatsbeschrijving',
     text: 'Bij de start van een huurperiode leggen we de toestand van het pand zorgvuldig vast, ruimte per ruimte en met duidelijke foto\'s.',
     href: '/onze-diensten#ingaande-plaatsbeschrijving',
   },
   {
-    icon: 'out',
     title: 'Uitgaande plaatsbeschrijving',
     text: 'Bij het einde van de huur vergelijken we met de ingaande plaatsbeschrijving en stellen we veranderingen of schade objectief vast.',
     href: '/onze-diensten#uitgaande-plaatsbeschrijving',
   },
   {
-    icon: 'smoke',
     title: 'Huurcheck',
     text: 'Is het pand in orde? We controleren onder meer of de rookmelders aanwezig zijn en werken, en of het pand goed wordt onderhouden.',
     href: '/onze-diensten#huurcheck',
   },
   {
-    icon: 'tools',
     title: 'Opvolging van werken',
     text: 'Werden er herstellingen of werken uitgevoerd? Wij controleren of alles correct en volgens afspraak gebeurd is.',
     href: '/onze-diensten#opvolging-van-werken',
@@ -88,7 +84,6 @@ const services = [
       <div class="grid grid--4">
         {services.map((s) => (
           <article class="card">
-            <div class="card__icon"><Icon name={s.icon} size={26} /></div>
             <h3>{s.title}</h3>
             <p>{s.text}</p>
             <a class="card__link" href={s.href}>Meer over {s.title.toLowerCase()} <Icon name="arrow" size={16} /></a>
