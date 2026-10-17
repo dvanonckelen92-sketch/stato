@@ -2,23 +2,13 @@
 import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { SITE } from '../data/site';
 import { serviceNode } from '../data/schema';
 
 import heroImg from '../assets/foto/plaatsbeschrijver-fotografeert-keuken.jpg';
 import sideImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
 import backupImg from '../assets/foto/verslag-opmaken-laptop.jpg';
-
-const features = [
-  { title: 'Eén vast aanspreekpunt', text: 'Persoonlijk en rechtstreeks contact voor iedere opdracht.' },
-  { title: 'Intrede én uittrede', text: 'STATO kan het dossier opvolgen van de intredende tot de uitgaande plaatsbeschrijving.' },
-  { title: 'Uitgebreide verslaggeving', text: 'Gedetailleerde beschrijvingen, ondersteund door duidelijke fotodocumentatie.' },
-  { title: 'Snelle oplevering', text: 'Oplevering van het verslag is mogelijk binnen 24 uur na het plaatsbezoek.' },
-  { title: 'Minder administratie', text: 'Wij kunnen de afspraken rechtstreeks met de betrokken partijen regelen.' },
-  { title: 'Rechtstreekse facturatie', text: 'STATO kan de facturatie rechtstreeks met huurder en verhuurder afhandelen.' },
-  { title: 'Duidelijke tarieven', text: 'Vooraf duidelijkheid over de kostprijs, zonder onverwachte kosten achteraf.' },
-  { title: 'Flexibele samenwerking', text: 'Van een enkele opdracht tot een structurele samenwerking met uw kantoor.' },
-] as const;
 ---
 <Base
   title="Plaatsbeschrijver voor vastgoedkantoren"
@@ -37,10 +27,10 @@ const features = [
   <section class="page-hero dark">
     <div class="container page-hero__grid">
       <div>
-        <h1>Uw vaste partner voor plaatsbeschrijvingen</h1>
-        <p class="lead">Besteed uw plaatsbeschrijvingen uit aan STATO en bespaar tijd en administratie. Wij verzorgen de praktische opvolging, het plaatsbezoek, de uitgebreide fotodocumentatie, het professionele verslag en indien gewenst ook de rechtstreekse facturatie aan de betrokken partijen.</p>
+        <h1>Plaatsbeschrijvingen uitbesteden als vastgoedkantoor</h1>
+        <p class="lead">U stuurt de gegevens van het pand door, STATO doet de rest: de afspraak met huurder en verhuurder, het plaatsbezoek, het verslag met foto's en als u dat wilt ook de facturatie.</p>
         <div class="hero__actions">
-          <a class="btn btn--gold" href="/vrijblijvende-offerte">Maak kennis met STATO <Icon name="arrow" size={18} /></a>
+          <a class="btn btn--gold" href="/vrijblijvende-offerte">Kennismaken <Icon name="arrow" size={18} /></a>
           <a class="btn btn--ghost-light" href={`tel:${SITE.phone}`}><Icon name="phone" size={18} /> {SITE.phoneDisplay}</a>
         </div>
       </div>
@@ -49,73 +39,41 @@ const features = [
   </section>
 
   <section class="section">
-    <div class="container split">
-      <div>
-        <h2>Wij nemen uw plaatsbeschrijvingen uit handen</h2>
-        <p>Als vastgoedprofessional wilt u zich kunnen focussen op de verhuur en het beheer van uw vastgoed. STATO ondersteunt vastgoedkantoren als externe partner voor professionele intredende en uitgaande plaatsbeschrijvingen.</p>
-        <p>U bezorgt ons de nodige gegevens en wij nemen de verdere praktische opvolging zoveel mogelijk van u over: van het inplannen van het plaatsbezoek tot het opstellen en afleveren van het verslag.</p>
-        <p>Zo beschikt uw kantoor over een betrouwbare partner, zonder dat u iedere plaatsbeschrijving zelf hoeft op te volgen.</p>
+    <div class="container svc-layout">
+      <div class="svc-list">
+        <article id="wat-stato-overneemt">
+          <h2>Wat neemt STATO van uw kantoor over?</h2>
+          <p>Het inplannen van het plaatsbezoek, als u wilt rechtstreeks met huurder en verhuurder. De plaatsbeschrijving zelf, met foto's van elke ruimte. Het verslag, digitaal binnen 24 uur na het bezoek als het snel moet. En de facturatie aan huurder en verhuurder, als u die liever niet zelf doet.</p>
+          <p>U heeft voor elke opdracht hetzelfde aanspreekpunt, en STATO kan een dossier opvolgen van de intredende tot de uitgaande plaatsbeschrijving.</p>
+        </article>
+
+        <article id="opdracht-doorgeven">
+          <h2>Hoe geeft u een opdracht door?</h2>
+          <p>Stuur de gegevens van het pand en van de betrokken partijen naar <a href={`mailto:${SITE.email}`}>{SITE.email}</a> of bel <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>. Moet STATO zelf de afspraak met huurder en verhuurder maken, zeg het er dan bij.</p>
+        </article>
+
+        <article id="back-up">
+          <h2>Kan STATO ook af en toe inspringen?</h2>
+          <p>Ja. Werkt uw kantoor al met een vaste plaatsbeschrijver, of doen uw eigen medewerkers het, dan kunt u STATO inschakelen bij drukte, vakantie, ziekte of een volle planning. Daar hoeft geen vaste samenwerking tegenover te staan: één opdracht kan ook.</p>
+          <p>Zo hoeft u geen afspraken met klanten uit te stellen wanneer uw eigen agenda volloopt.</p>
+        </article>
+
+        <article id="kostprijs">
+          <h2>Wat kost het?</h2>
+          <p>STATO werkt met vaste tarieven per type pand, die u vooraf kent. Gaat het om een structurele samenwerking, dan bekijken we samen welke werkwijze bij uw kantoor past. Meer over de prijzen op de pagina <a href="/tarieven-werkwijze">tarieven en werkwijze</a>.</p>
+        </article>
       </div>
-      <div class="split__media split__media--tall">
-        <Photo src={sideImg} alt="Plaatsbeschrijver aan het werk met een tablet in een huurwoning" width={640} height={800} position="left" sizes="(max-width: 860px) 92vw, 540px" />
-      </div>
+
+      <aside class="svc-aside">
+        <Photo src={sideImg} alt="Plaatsbeschrijver aan het werk met een tablet in een huurwoning" width={480} height={600} position="left" sizes="(max-width: 900px) 92vw, 400px" />
+        <Photo src={backupImg} alt="Pieter Wolfs plant opdrachten in op zijn laptop" width={480} height={360} sizes="(max-width: 900px) 92vw, 400px" />
+      </aside>
     </div>
   </section>
 
-  <section class="section section--dark dark">
-    <div class="container">
-      <div class="section__head">
-        <h2>Van opdracht tot verslag: STATO regelt het</h2>
-      </div>
-      <ol class="steps">
-        <li><h3>U bezorgt ons de opdracht</h3><p>Stuur ons de gegevens van het pand en de betrokken partijen.</p></li>
-        <li><h3>Wij plannen het plaatsbezoek</h3><p>Indien gewenst neemt STATO rechtstreeks contact op met huurder en verhuurder om een geschikt moment af te spreken.</p></li>
-        <li><h3>Wij voeren de plaatsbeschrijving uit</h3><p>Het pand wordt uitgebreid en objectief beschreven en voorzien van duidelijke fotodocumentatie.</p></li>
-        <li><h3>Wij leveren het verslag af</h3><p>Het verslag kan binnen 24 uur na het plaatsbezoek digitaal worden opgeleverd. Ook de facturatie aan de betrokken partijen kan rechtstreeks via STATO verlopen.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section section--soft">
-    <div class="container">
-      <div class="section__head">
-        <h2>Waarom vastgoedkantoren kiezen voor STATO</h2>
-      </div>
-      <div class="features">
-        {features.map((f) => (
-          <div>
-            <h3>{f.title}</h3>
-            <p>{f.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container split split--reverse">
-      <div>
-        <h2>Ook beschikbaar als back-up plaatsbeschrijver</h2>
-        <p>Werkt uw vastgoedkantoor al samen met een vaste plaatsbeschrijver, of voeren uw eigen medewerkers de plaatsbeschrijvingen uit? Ook dan kan STATO een waardevolle aanvulling zijn.</p>
-        <p>Bij drukke periodes, vakantie, ziekte, onverwachte afwezigheid of een volle planning schakelt u STATO flexibel in. U hoeft hiervoor geen vaste samenwerking aan te gaan: ook voor één opdracht of tijdelijke ondersteuning kunt u op ons rekenen.</p>
-        <p>Wij nemen de opdracht professioneel over en regelen, indien gewenst, rechtstreeks de praktische afspraken met huurder en verhuurder. Zo hoeft u geen klanten teleur te stellen of afspraken uit te stellen wanneer uw eigen planning volloopt.</p>
-      </div>
-      <div class="split__media split__media--wide">
-        <Photo src={backupImg} alt="Pieter Wolfs plant opdrachten in op zijn laptop" width={720} height={480} sizes="(max-width: 860px) 92vw, 540px" />
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="container cta-band__inner">
-      <div>
-        <h2>Kennismaken met STATO?</h2>
-        <p>Op zoek naar een betrouwbare partner voor de plaatsbeschrijvingen van uw vastgoedkantoor? We maken graag vrijblijvend kennis en bekijken hoe STATO uw kantoor kan ondersteunen. Of het nu gaat om één opdracht, hulp tijdens drukke periodes of een vaste samenwerking: samen zoeken we een praktische werkwijze die bij uw kantoor past.</p>
-      </div>
-      <div class="cta-band__actions">
-        <a class="btn btn--gold" href="/vrijblijvende-offerte">Plan een kennismaking <Icon name="arrow" size={18} /></a>
-        <a class="btn btn--ghost-light" href={`mailto:${SITE.email}`}><Icon name="mail" size={18} /> {SITE.email}</a>
-      </div>
-    </div>
-  </section>
+  <CtaBand
+    title="Even kennismaken?"
+    text="Of het nu om één opdracht gaat, hulp tijdens een drukke periode of een vaste samenwerking: we bekijken graag hoe STATO uw kantoor kan ondersteunen."
+    button="Kennismaking plannen"
+  />
 </Base>

@@ -149,7 +149,6 @@ ul { padding-left: 1.2em; }
 .section--soft { background: var(--bg-soft); }
 .section--tight { padding-block: clamp(40px, 6vw, 72px); }
 .section__head { max-width: 760px; margin-bottom: clamp(32px, 5vw, 56px); }
-.section__head--center { margin-inline: auto; text-align: center; }
 
 .dark { background-color: var(--dark); }
 
@@ -186,36 +185,22 @@ main:has(> .crumbs) > .page-hero .container { padding-top: clamp(72px, 9vw, 112p
 }
 
 /* ---------- Kaarten & rasters ---------- */
-.grid { display: grid; gap: clamp(16px, 2.4vw, 28px); }
-.grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
-.grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
-.grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
 
 .card {
   position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
   padding: clamp(22px, 3vw, 32px); box-shadow: 0 1px 2px rgb(20 17 58 / 4%);
   transition: box-shadow .25s, transform .25s, border-color .25s;
 }
-.card:hover { box-shadow: var(--shadow); border-color: #d4d0ea; }
-.card h3 { margin-bottom: .4em; }
-.card p:last-child { margin-bottom: 0; }
-.card__link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; text-decoration: none; margin-top: 8px; }
-.card__link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
-.card__link svg { transition: transform .2s; }
-.card:hover .card__link svg { transform: translateX(4px); }
 
 /* Split: tekst + beeld */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
-.split--reverse > :first-child { order: 2; }
 .split__media { position: relative; }
 .split__media picture img { border-radius: var(--radius-lg); width: 100%; object-fit: cover; }
 .split__media--tall picture img { aspect-ratio: 4 / 5; }
 .split__media--wide picture img { aspect-ratio: 3 / 2; }
 .split__media::before { content: ''; position: absolute; inset: 24px -24px -24px 24px; border-radius: var(--radius-lg); background: var(--purple-soft); z-index: -1; }
-.split--reverse .split__media::before { inset: 24px 24px -24px -24px; }
 @media (max-width: 860px) {
   .split { grid-template-columns: 1fr; }
-  .split--reverse > :first-child { order: 0; }
   .split__media::before { display: none; }
   .split__media--tall { max-width: 460px; }
 }
@@ -229,32 +214,8 @@ main:has(> .crumbs) > .page-hero .container { padding-top: clamp(72px, 9vw, 112p
   background-size: 15px; background-repeat: no-repeat; background-position: center;
 }
 
-/* Stappen */
-.steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: clamp(16px, 2.4vw, 28px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
-.steps li { position: relative; padding: 28px 24px 26px; border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
-.steps li::before {
-  counter-increment: step; content: counter(step, decimal-leading-zero);
-  display: block; font: 600 2.6rem/1 var(--font-heading), var(--font-body); color: var(--purple); margin-bottom: 14px;
-}
-.steps li::after { content: ''; position: absolute; top: 46px; left: 82px; right: 24px; height: 2px; background: repeating-linear-gradient(90deg, var(--gold) 0 8px, transparent 8px 14px); opacity: .7; }
-.steps h3 { font-size: 1.15rem; }
-.steps p { margin: 0; color: var(--muted); }
-.section--dark .steps li { background: var(--dark-2); border-color: rgb(255 255 255 / 10%); }
-.section--dark .steps li::before { color: var(--gold); }
-.section--dark .steps h3 { color: #fff; }
-.section--dark .steps p { color: #c9c5e6; }
 
-/* Donkere sectie */
-.section--dark { color: #dcd9f0; }
-.section--dark h2, .section--dark h3 { color: #fff; }
-.section--dark .lead { color: #c9c5e6; }
-.section--dark a:not(.btn) { color: #fff; }
 
-/* Kenmerken (vastgoedprofessionals) */
-.features { display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: #fff; }
-.features > div { padding: 26px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.features h3 { font-size: 1.1rem; margin-bottom: .35em; }
-.features p { margin: 0; color: var(--muted); font-size: .98rem; }
 
 /* Getuigenissen */
 .quotes { display: grid; gap: clamp(16px, 2.4vw, 28px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }
@@ -268,11 +229,6 @@ main:has(> .crumbs) > .page-hero .container { padding-top: clamp(72px, 9vw, 112p
 .area .split__media { max-width: 460px; width: 100%; justify-self: center; }
 @media (max-width: 860px) { .area { grid-template-columns: 1fr; } }
 
-/* Feitenbalk */
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1px; background: var(--line); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); }
-.facts > div { background: #fff; padding: 24px; }
-.facts strong { display: block; font: 600 1.6rem/1.1 var(--font-heading), var(--font-body); color: var(--purple); margin-bottom: 6px; }
-.facts span { color: var(--muted); font-size: .95rem; }
 
 /* Rapport-anatomie */
 .report { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 28px; border: 1px solid var(--line); font-size: .95rem; }
@@ -399,3 +355,16 @@ main:has(> .crumbs) > .page-hero .container { padding-top: clamp(72px, 9vw, 112p
 .quotes--inline .quote { padding: 22px 24px; }
 .quotes--inline .quote::before { display: none; }
 .quotes--inline blockquote { font-size: 1rem; }
+
+/* Diensten-pagina: tekst links, foto's rechts (geen zigzag) */
+.svc-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.svc-list article { padding: 32px 0; border-top: 1px solid var(--line); scroll-margin-top: 96px; }
+.svc-list article:first-child { border-top: 2px solid var(--navy); }
+.svc-list h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); color: var(--navy); }
+.svc-list p:last-child { margin-bottom: 0; }
+.svc-aside { position: sticky; top: 100px; display: grid; gap: 18px; }
+.svc-aside img { border-radius: var(--radius); }
+@media (max-width: 900px) {
+  .svc-layout { grid-template-columns: 1fr; }
+  .svc-aside { position: static; grid-template-columns: 1fr 1fr; }
+}

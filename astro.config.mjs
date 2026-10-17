@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { execSync } from 'node:child_process';
 
 export default defineConfig({
   site: 'https://www.stato.be',
@@ -30,6 +31,15 @@ export default defineConfig({
     sitemap({
       // Google negeert priority en changefreq; bedankpagina en 404 horen niet in de sitemap.
       filter: (page) => !page.includes('/bedankt') && !page.includes('/404'),
+      // lastmod = laatste commit van de paginabron, zodat de datum klopt (Google gebruikt hem alleen als hij juist is).
+      serialize(item) {
+        const slug = new URL(item.url).pathname.replace(/^\/|\/$/g, '') || 'index';
+        try {
+          const date = execSync(`git log -1 --format=%cI -- src/pages/${slug}.astro`, { encoding: 'utf8' }).trim();
+          if (date) item.lastmod = date;
+        } catch {}
+        return item;
+      },
     }),
   ],
 });

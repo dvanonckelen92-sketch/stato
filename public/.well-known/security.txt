@@ -1,0 +1,4 @@
+Contact: mailto:info@stato.be
+Expires: 2027-10-17T00:00:00.000Z
+Preferred-Languages: nl, en
+Canonical: https://www.stato.be/.well-known/security.txt

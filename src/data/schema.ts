@@ -3,7 +3,8 @@ import { SITE, BUSINESS_ID, WEBSITE_ID, FOUNDER_ID } from './site';
 // Alleen gegevens die ook zichtbaar op de site staan. Geen reviews: Google toont geen sterren
 // voor reviews die een bedrijf over zichzelf publiceert (Review snippet-richtlijnen).
 export const businessNode = {
-  '@type': 'ProfessionalService',
+  // ProfessionalService is een LocalBusiness- en dus Organization-subtype; Organization erbij voor tools die geen subtypes herkennen.
+  '@type': ['ProfessionalService', 'Organization'],
   '@id': BUSINESS_ID,
   name: SITE.name,
   legalName: SITE.legalName,
@@ -33,6 +34,19 @@ export const businessNode = {
     'Huurcheck',
     'Vlaams Woninghuurdecreet',
   ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Diensten van STATO',
+    itemListElement: [
+      ['ingaande-plaatsbeschrijving', 'Ingaande plaatsbeschrijving'],
+      ['uitgaande-plaatsbeschrijving', 'Uitgaande plaatsbeschrijving'],
+      ['huurcheck', 'Huurcheck'],
+      ['opvolging-van-werken', 'Opvolging van werken'],
+    ].map(([id, name]) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', '@id': `${SITE.url}/onze-diensten#${id}`, name },
+    })),
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
