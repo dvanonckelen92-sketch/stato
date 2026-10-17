@@ -23,6 +23,9 @@ const year = new Date().getFullYear();
         <li><Icon name="phone" size={16} /><a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
         <li><Icon name="mail" size={16} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
       </ul>
+      <p class="site-footer__profiles">
+        {SITE.profiles.map((p, i) => <>{i > 0 && ' · '}<a href={p.url} rel="noopener">{p.label}</a></>)}
+      </p>
     </div>
 
     <div>

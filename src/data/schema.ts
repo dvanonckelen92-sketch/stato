@@ -17,6 +17,7 @@ export const businessNode = {
   telephone: SITE.phone,
   email: SITE.email,
   vatID: SITE.vat,
+  sameAs: SITE.profiles.map((p) => p.url),
   address: {
     '@type': 'PostalAddress',
     streetAddress: SITE.address.street,

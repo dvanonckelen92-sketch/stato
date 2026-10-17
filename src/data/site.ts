@@ -17,6 +17,12 @@ export const SITE = {
     country: 'BE',
   },
   areaServed: ['Limburg', 'Vlaams-Brabant'],
+  // Profielen van STATO zelf (gekoppeld aan het Google Bedrijfsprofiel).
+  profiles: [
+    { label: 'Google', url: 'https://www.google.com/maps?cid=7936025958209312172' },
+    { label: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61592333714409' },
+    { label: 'Instagram', url: 'https://www.instagram.com/stato.be/' },
+  ],
   ogImage: '/og/stato-plaatsbeschrijving.jpg',
   sampleReport: '/voorbeeldverslag-plaatsbeschrijving-stato.pdf',
   // Formulier-endpoint. Standaard Netlify Forms (werkt zonder extra code op Netlify).
