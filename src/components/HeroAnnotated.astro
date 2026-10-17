@@ -1,0 +1,33 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import heroImg from '../assets/foto/plaatsbeschrijver-fotografeert-keuken.jpg';
+
+// Posities in % van de foto (3:2, niet bijgesneden), zodat de punten op het juiste voorwerp blijven staan.
+const marks = [
+  { n: 1, label: 'Kraan', x: 21, y: 31 },
+  { n: 2, label: 'Trap', x: 64, y: 16 },
+  { n: 3, label: 'Kookplaat', x: 36, y: 80 },
+  { n: 4, label: 'Schakelaar', x: 97, y: 55, left: true },
+];
+---
+<section class="hero-b">
+  <div class="hero-b__text">
+    <h1>Gedetailleerde plaatsbeschrijving in Limburg en Vlaams-Brabant</h1>
+    <p class="lead">Verhuur of betrek uw vastgoed met een gerust gevoel. STATO maakt gedetailleerde en betrouwbare plaatsbeschrijvingen, ondersteund met duidelijke foto's en een professioneel verslag.</p>
+    <div class="hero-b__actions">
+      <a class="btn btn--gold" href="/vrijblijvende-offerte">Vraag uw prijs aan <Icon name="arrow" size={18} /></a>
+      <a class="btn btn--ghost-light" href="/onze-diensten">Ontdek onze diensten</a>
+    </div>
+  </div>
+  <div class="hero-b__photo">
+    <Photo src={heroImg} alt="Pieter Wolfs van STATO fotografeert met een tablet een keuken met kraan, kookplaat en zwevende trap" width={1200} height={800} sizes="(max-width: 900px) 100vw, 56vw" priority />
+    <ol class="hero-b__marks" aria-label="Wat we onder meer vastleggen op deze foto">
+      {marks.map((m) => (
+        <li class:list={['mark', { 'mark--left': m.left }]} style={`left:${m.x}%;top:${m.y}%`}>
+          <span class="mark__dot">{m.n}</span><span class="mark__label">{m.label}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

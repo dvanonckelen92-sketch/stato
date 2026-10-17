@@ -4,13 +4,11 @@ import Photo from '../components/Photo.astro';
 import Icon from '../components/Icon.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
+import HeroAnnotated from '../components/HeroAnnotated.astro';
 import { SITE } from '../data/site';
 import { businessNode, websiteNode, founderNode, faqNode } from '../data/schema';
 import { homeFaq } from '../data/faq';
 
-import heroImg from '../assets/foto/plaatsbeschrijver-fotografeert-keuken.jpg';
-import heroDetail from '../assets/foto/detailfoto-kraan-tablet.jpg';
-import heroRoom from '../assets/foto/plaatsbezoek-woonkamer-trap.jpg';
 import proImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
 import detailImg from '../assets/foto/fotodocumentatie-tablet-detail.jpg';
 
@@ -43,39 +41,14 @@ const services = [
   path="/"
   schema={[businessNode, websiteNode, founderNode, faqNode('/', homeFaq)]}
 >
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__text">
-        <h1>Gedetailleerde plaatsbeschrijving in <em>Limburg</em> en <em>Vlaams-Brabant</em></h1>
-        <p class="lead">Verhuur of betrek uw vastgoed met een gerust gevoel. STATO maakt gedetailleerde en betrouwbare plaatsbeschrijvingen, ondersteund met duidelijke foto's en een professioneel verslag.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="/vrijblijvende-offerte">Vraag uw prijs aan <Icon name="arrow" size={18} /></a>
-          <a class="btn btn--outline" href="/onze-diensten">Ontdek onze diensten</a>
-        </div>
-      </div>
-      <div class="hero__photos">
-        <figure class="hero__photo hero__photo--main">
-          <Photo src={heroImg} alt="Pieter Wolfs van STATO fotografeert met een tablet de keuken van een huurwoning" width={560} height={700} sizes="(max-width: 900px) 60vw, 400px" priority />
-          <figcaption><b>Foto 1</b> Keuken</figcaption>
-        </figure>
-        <figure class="hero__photo hero__photo--detail">
-          <Photo src={heroDetail} alt="Detailfoto van een keukenkraan op het scherm van een tablet" width={360} height={360} sizes="(max-width: 900px) 36vw, 280px" />
-          <figcaption><b>Foto 2</b> Detail kraan</figcaption>
-        </figure>
-        <figure class="hero__photo hero__photo--room">
-          <Photo src={heroRoom} alt="Plaatsbeschrijver in een woonkamer met zwevende trap" width={360} height={270} sizes="(max-width: 900px) 36vw, 280px" />
-          <figcaption><b>Foto 3</b> Woonkamer</figcaption>
-        </figure>
-      </div>
-    </div>
-    <div class="hero__strip">
-      <ul class="container">
-        <li>Ingaande én uitgaande plaatsbeschrijving aan één vaste prijs</li>
-        <li>Meterstanden en rookmelders standaard in het verslag</li>
-        <li>Verslag binnen 24 uur na het plaatsbezoek, als u dat wilt</li>
-      </ul>
-    </div>
-  </section>
+  <HeroAnnotated />
+  <div class="hero__strip">
+    <ul class="container">
+      <li>Ingaande én uitgaande plaatsbeschrijving aan één vaste prijs</li>
+      <li>Meterstanden en rookmelders standaard in het verslag</li>
+      <li>Verslag binnen 24 uur na het plaatsbezoek, als u dat wilt</li>
+    </ul>
+  </div>
 
   <section class="section">
     <div class="container">
