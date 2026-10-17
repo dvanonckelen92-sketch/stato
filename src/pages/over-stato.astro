@@ -20,14 +20,13 @@ const portraitForSchema = await getImage({ src: portrait, width: 800, format: 'j
   breadcrumbs={[{ name: 'Over STATO', path: '/over-stato' }]}
   schema={[{ ...founderNode, image: new URL(portraitForSchema.src, SITE.url).href }]}
 >
-  <section class="page-hero blueprint">
+  <section class="page-hero dark">
     <div class="container page-hero__grid">
       <div>
         <h1>Ik ben Pieter, oprichter van STATO en gebeten door vastgoed</h1>
         <p class="lead">Vanuit mijn interesse in de vastgoedwereld kwam ik steeds vaker in contact met vastgoedmakelaars en groeide mijn ervaring in het opmaken van plaatsbeschrijvingen. Al snel voelde ik: dit is wat ik graag doe. Daarom heb ik mij verder verdiept in het vak en ben ik STATO gestart.</p>
       </div>
-      <div class="hero__media" style="max-width:420px;justify-self:center">
-        <span class="frame" aria-hidden="true"></span>
+      <div class="portrait">
         <Photo src={portrait} alt="Pieter Wolfs, oprichter van STATO, met een tablet aan een moderne woning met zwembad" width={560} height={760} position="center" sizes="(max-width: 900px) 92vw, 420px" priority />
       </div>
     </div>
@@ -51,7 +50,7 @@ const portraitForSchema = await getImage({ src: portrait, width: 800, format: 'j
         <div class="split__media split__media--tall">
           <Photo src={workImg} alt="Pieter Wolfs tijdens een plaatsbezoek in een woonkamer met zwevende trap" width={640} height={800} position="center" sizes="(max-width: 860px) 92vw, 540px" />
         </div>
-        <div class="contact-card blueprint" style="margin-top:28px;color:#fff">
+        <div class="contact-card dark" style="margin-top:28px;color:#fff">
           <strong style="font-size:1.15rem">{SITE.founder}<br /><span style="font-weight:400;color:#cfcbea">{SITE.legalName}</span></strong>
           <a href={`tel:${SITE.phone}`} style="color:#fff"><span class="ico"><Icon name="phone" size={20} /></span>{SITE.phoneDisplay}</a>
           <a href={`mailto:${SITE.email}`} style="color:#fff"><span class="ico"><Icon name="mail" size={20} /></span>{SITE.email}</a>

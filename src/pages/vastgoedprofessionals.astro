@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 import { SITE } from '../data/site';
 import { serviceNode } from '../data/schema';
 
-import heroImg from '../assets/foto/verslag-digitaal-afleveren.jpg';
+import heroImg from '../assets/foto/plaatsbeschrijver-fotografeert-keuken.jpg';
 import sideImg from '../assets/foto/plaatsbeschrijving-keuken-tablet.jpg';
 import backupImg from '../assets/foto/verslag-opmaken-laptop.jpg';
 
@@ -34,7 +34,7 @@ const features = [
     ),
   ]}
 >
-  <section class="page-hero blueprint">
+  <section class="page-hero dark">
     <div class="container page-hero__grid">
       <div>
         <h1>Uw vaste partner voor plaatsbeschrijvingen</h1>
@@ -44,7 +44,7 @@ const features = [
           <a class="btn btn--ghost-light" href={`tel:${SITE.phone}`}><Icon name="phone" size={18} /> {SITE.phoneDisplay}</a>
         </div>
       </div>
-      <Photo src={heroImg} alt="Pieter Wolfs van STATO bereidt een verslag voor op zijn laptop" width={720} height={540} position="right" sizes="(max-width: 900px) 92vw, 500px" priority />
+      <Photo src={heroImg} alt="Pieter Wolfs van STATO fotografeert met een tablet een keuken tijdens een plaatsbeschrijving" width={720} height={540} position="right" sizes="(max-width: 900px) 92vw, 500px" priority />
     </div>
   </section>
 
@@ -62,7 +62,7 @@ const features = [
     </div>
   </section>
 
-  <section class="section section--dark blueprint">
+  <section class="section section--dark dark">
     <div class="container">
       <div class="section__head">
         <h2>Van opdracht tot verslag: STATO regelt het</h2>

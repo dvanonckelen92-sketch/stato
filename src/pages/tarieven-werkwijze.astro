@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { SITE } from '../data/site';
 
-import heroImg from '../assets/foto/verslag-digitaal-afleveren.jpg';
+import heroImg from '../assets/foto/verslag-opmaken-laptop.jpg';
 import priceImg from '../assets/foto/pieter-wolfs-portret-tablet.jpg';
 ---
 <Base
@@ -14,7 +14,7 @@ import priceImg from '../assets/foto/pieter-wolfs-portret-tablet.jpg';
   path="/tarieven-werkwijze"
   breadcrumbs={[{ name: 'Tarieven & werkwijze', path: '/tarieven-werkwijze' }]}
 >
-  <section class="page-hero blueprint">
+  <section class="page-hero dark">
     <div class="container page-hero__grid">
       <div>
         <h1>Vaste prijzen. Snelle oplevering. Duidelijke afspraken.</h1>
@@ -23,7 +23,7 @@ import priceImg from '../assets/foto/pieter-wolfs-portret-tablet.jpg';
           <a class="btn btn--gold" href="/vrijblijvende-offerte">Vraag uw prijs aan <Icon name="arrow" size={18} /></a>
         </div>
       </div>
-      <Photo src={heroImg} alt="Pieter Wolfs werkt een plaatsbeschrijvingsverslag af op zijn laptop" width={720} height={540} position="right" sizes="(max-width: 900px) 92vw, 500px" priority />
+      <Photo src={heroImg} alt="Pieter Wolfs werkt een plaatsbeschrijvingsverslag af op zijn laptop" width={720} height={540} sizes="(max-width: 900px) 92vw, 500px" priority />
     </div>
   </section>
 
@@ -43,7 +43,7 @@ import priceImg from '../assets/foto/pieter-wolfs-portret-tablet.jpg';
     </div>
   </section>
 
-  <section class="section section--dark blueprint">
+  <section class="section section--dark dark">
     <div class="container">
       <div class="section__head">
         <h2>Snelle oplevering van uw verslag</h2>
